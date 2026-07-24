@@ -2,6 +2,7 @@ import streamlit as st
 from src.screens.student_screen import  student_screen 
 from src.screens.teacher_screen import  teacher_screen 
 from src.screens.home_screen import  home_screen 
+from src.screens.choice_screen import  choice_screen
 
 def main() :
     if 'login_type' not in st.session_state :
@@ -12,6 +13,8 @@ def main() :
             teacher_screen()
         case 'student' :
             student_screen()
+        case 'choose' :
+            choice_screen()
         case None :
             home_screen()
         

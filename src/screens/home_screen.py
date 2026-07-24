@@ -23,7 +23,7 @@ def home_screen() :
             unsafe_allow_html=True,
         )
         if st.button("Start learning", type="primary"):
-            st.session_state['login_type'] = 'choice'
+            st.session_state['login_type'] = 'choose'
             st.rerun()
 
     #with col2:

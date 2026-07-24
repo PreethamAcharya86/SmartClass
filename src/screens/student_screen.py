@@ -1,7 +1,13 @@
 import streamlit as st
-def student_screen() :
-    st.header("Students")
+import numpy as np
+from src.components.header import back
+from PIL import Image
 
-    if st.button("Back") :
-        st.session_state["login_type"] = None
-        st.rerun()
+def student_screen() :
+    back()
+    st.header("Students Login!")
+
+    img_source = st.camera_input("Possition your face in the center")
+    if img_source :
+        np.array(Image.open(img_source))
+        

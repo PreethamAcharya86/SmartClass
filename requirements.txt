@@ -9,5 +9,5 @@ setuptools<70.0.0
 supabase  # -> database
 bcrypt
 segno    # -> QR code making
-pillow  # -> img preprocess
+Pillow  # -> img preprocess
 streamlit  # -> Frontend library

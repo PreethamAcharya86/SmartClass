@@ -11,3 +11,6 @@ bcrypt
 segno    # -> QR code making
 Pillow  # -> img preprocess
 streamlit  # -> Frontend library
+
+librosa
+resemblyzer

@@ -13,4 +13,6 @@ Pillow  # -> img preprocess
 streamlit  # -> Frontend library
 
 librosa
-resemblyzer
+speechbrain
+torch
+torchaudio

@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-from src.components.header import back
+from src.components.header import back, navbar
 from src.pipelines.face_pipeline import predict_attendance, get_face_embedding, train_classifier
 from src.pipelines.voice_pipeline import get_voice_embedding
 from src.database.db import get_all_students, create_student
@@ -8,9 +8,10 @@ from PIL import Image
 import time
 def student_screen() :
     back()
+    navbar()
     show_registration = False
 
-    if 'student_data' in st.session_state :
+    if 'student_data' in st.session_state and st.session_state.user_role == 'student':
         student_dashboard()
         return
     st.header("Students Login!")
@@ -36,6 +37,7 @@ def student_screen() :
                         st.session_state.student_data = student
                         time.sleep(1)
                         st.toast(f"Welcome back {student['name']}!")
+                        st.rerun()
                 else :
                     st.info("Face not recognised you might be a new student!")
                     show_registration = True
@@ -61,8 +63,6 @@ def student_screen() :
                             voice_emb = None
 
                             if audio_data :
-                                st.write(audio_data)
-                                st.write(f"Audio bytes: {len(audio_data.read())}")
                                 voice_emb = get_voice_embedding(audio_data.read())
                             response_data = create_student(new_name, face_embedding = face_emb, voice_embedding = voice_emb)
                             if response_data :

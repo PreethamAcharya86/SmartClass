@@ -1,22 +1,21 @@
 import streamlit as st
-from src.components.header import back
+from src.components.header import back, navbar
 from src.database.db import register_teacher
 from src.database.db import login_teacher
 import time
 
 def teacher_screen() :
+    navbar()
     back()
 
-    if 'teacher_data' in st.session_state :
+    if 'teacher_data' in st.session_state and st.session_state.user_role == 'teacher':
         teacher_dashboard()
     elif 'teacher' not in st.session_state or st.session_state.teacher == "login" :
         teacher_screen_login()
     elif st.session_state.teacher == "register" :
         teacher_screen_register()
 
-def teacher_dashboard() :
-    data = st.session_state.teacher_data
-    st.header(f"Hello {data['name']}!")
+
 
 def teacher_screen_login() :
     st.header('Login using password', text_alignment="center")
@@ -67,3 +66,8 @@ def teacher_screen_register() :
         if st.button("Already have an account?") :
             st.session_state.teacher = "login"
             st.rerun()
+
+            
+def teacher_dashboard() :
+    data = st.session_state.teacher_data
+    st.subheader(f"Hello {data['name']}!")

@@ -9,9 +9,26 @@ def navbar() :
     with c1 :
         st.write("SMART CLASS")
     with c2 :
-        if st.button("Get started") :
-            st.session_state['login_type'] = 'choose'
-            st.rerun()
+        if  'teacher_data' in st.session_state and st.session_state.user_role == 'teacher':
+            if st.button("Logout teacher", key='logout') :
+                del st.session_state.teacher_data
+                st.session_state.user_role = None
+                st.session_state.is_logged_in = False
+                st.session_state['login_type'] = None
+                st.rerun()
+
+        elif 'student_data' in st.session_state and st.session_state.user_role == 'student':
+            if st.button("Logout", key='logout') :
+                del st.session_state.student_data
+                st.session_state.user_role = None
+                st.session_state.is_logged_in = False
+                st.session_state['login_type'] = None
+                st.rerun()
+
+        else :
+            if st.button("Get started") :
+                st.session_state['login_type'] = 'choose'
+                st.rerun()
         
 
 def back() :

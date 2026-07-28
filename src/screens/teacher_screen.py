@@ -1,7 +1,9 @@
 import streamlit as st
 from src.components.header import back, navbar
-from src.database.db import register_teacher
-from src.database.db import login_teacher
+from src.components.create_subject_dialog import create_subject_dialog
+from src.components.share_subject_dialog import share_subject_dialog
+from src.components.subject_card import subject_card
+from src.database.db import register_teacher, login_teacher, get_teacher_subjects
 import time
 
 def teacher_screen() :
@@ -67,7 +69,81 @@ def teacher_screen_register() :
             st.session_state.teacher = "login"
             st.rerun()
 
-            
+
 def teacher_dashboard() :
     data = st.session_state.teacher_data
     st.subheader(f"Hello {data['name']}!")
+
+    if 'current_teacher_tab' not in st.session_state :
+        st.session_state.current_teacher_tab = 'take_attendance'
+    tab1, tab2, tab3 = st.columns(3)
+
+    with tab1 :
+        type = 'primary' if st.session_state.current_teacher_tab =='take_attendance' else 'secondary'
+        if st.button("Take attendance", type = type, width='stretch', icon=':material/ar_on_you:') :
+            st.session_state.current_teacher_tab = 'take_attendance'
+            st.rerun()
+    with tab2 :
+        type = 'primary' if st.session_state.current_teacher_tab =='manage_subjects' else 'secondary'
+        if st.button("Manage subjects", type=type, width='stretch', icon=':material/book_ribbon:') :
+            st.session_state.current_teacher_tab = 'manage_subjects'
+            st.rerun()
+    with tab3 :
+        type = 'primary' if st.session_state.current_teacher_tab =='attendance_record' else 'secondary'
+        if st.button("Attendance record",type=type, width='stretch', icon=':material/cards_stack:') :
+            st.session_state.current_teacher_tab = 'attendance_record'
+            st.rerun()
+            
+    st.divider()
+
+    if st.session_state.current_teacher_tab =='take_attendance' :
+        take_attendance()
+    if st.session_state.current_teacher_tab =='manage_subjects' :
+        manage_subjects(data)    
+    if st.session_state.current_teacher_tab =='attendance_record' :
+        attendance_record() 
+
+def take_attendance() :
+    st.subheader("Take Attendance") 
+
+def manage_subjects(data) :
+    teacher_id = data['id']
+    st.header("Subjects dashboard")  
+
+    col1, col2 = st.columns(2)
+    with col1 :
+        st.subheader("Manage subjects")
+
+    with col2 :
+        if st.button("Create new Subject", width='stretch') :
+            create_subject_dialog(teacher_id)
+
+    subjects = get_teacher_subjects(teacher_id)
+    
+    if subjects :
+        for subject in subjects :
+            stats = [
+                ("👨‍🎓","Students", subject["total_students"]),
+                ("📚","Classes", subject["total_classes"])
+            ]
+            def share_btn() :
+                if st.button(f"Share code:{subject['name']}", key=f"Share_{subject['subject_code']}", icon=":material/share:") :
+                    share_subject_dialog(subject['name'], subject['subject_code'])
+                    st.space()
+
+            subject_card(
+                name = subject['name'],
+                code = subject['subject_code'],
+                section = subject["section"],
+                stats = stats,
+                footer_callback = share_btn
+            )
+
+    else :
+        st.info("No subject found!")
+
+    
+    
+
+def attendance_record() :
+    st.subheader("Attendance records")

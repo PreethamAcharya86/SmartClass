@@ -10,7 +10,7 @@ def navbar() :
         st.write("SMART CLASS")
     with c2 :
         if  'teacher_data' in st.session_state and st.session_state.user_role == 'teacher':
-            if st.button("Logout teacher", key='logout') :
+            if st.button("Logout", key='logout') :
                 del st.session_state.teacher_data
                 st.session_state.user_role = None
                 st.session_state.is_logged_in = False

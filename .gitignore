@@ -4,3 +4,4 @@ venv/
 .streamlit/
 dist/
 *.py[cod]
+.vscode

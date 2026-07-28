@@ -100,3 +100,20 @@ def get_teacher_subjects(teacher_id) :
         return subjects
     except Exception as e :
         st.error(e)
+
+def enroll_to_subject(std_id, sub_id) :
+    data = {"student_id" : std_id, "subject_id" : sub_id}
+    response = supabase.table("subject_students").insert(data).execute()
+    return response
+
+def unenroll_to_subject(std_id, sub_id) :
+    response = supabase.table("subject_students").delete().eq("student_id", std_id).eq("subject_id", sub_id).execute()
+    return response.data
+
+def get_student_subjects(std_id) :
+    response = supabase.table("subject_students").select("*, subjects(*)").eq('student_id', std_id).execute()
+    return response.data
+
+def get_student_attendance(student_id) :
+    response = supabase.table("attendance_logs").select("*, subjects(*)").eq('student_id', student_id).execute()
+    return response.data

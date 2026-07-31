@@ -16,3 +16,5 @@ librosa
 speechbrain
 torch
 torchaudio
+
+streamlit-cookies-manager

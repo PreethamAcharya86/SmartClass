@@ -4,6 +4,7 @@ import io
 
 @st.dialog("Share class link")
 def share_subject_dialog(sub_name, sub_code) :
+    st.write(f"Link to {sub_name}")
     app_domain = "http://localhost:8501"
     join_url = f"{app_domain}/?join-code={sub_code}"
 

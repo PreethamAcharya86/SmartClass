@@ -5,7 +5,8 @@ from src.pipelines.face_pipeline import predict_attendance, get_face_embedding, 
 from src.pipelines.voice_pipeline import get_voice_embedding
 from src.components.subject_enroll_dialog import subject_enroll_dialog
 from src.components.subject_card import subject_card
-from src.database.db import get_all_students, create_student, get_student_subjects, get_student_attendance, unenroll_to_subject
+from src.components.unenroll_confirmation import unenroll_confirmation
+from src.database.db import get_all_students, create_student, get_student_subjects, get_student_attendance
 from PIL import Image
 import time
 def student_screen() :
@@ -102,6 +103,8 @@ def student_dashboard() :
         subjects = get_student_subjects(student_id)
         logs = get_student_attendance(student_id)
 
+    if not subjects :
+        st.write("You are not enrolled in any classes")
     stats_map  = {}
     for log in logs :
         sid = log["subject_id"]
@@ -119,10 +122,7 @@ def student_dashboard() :
         stats = stats_map.get(id, {"total" : 0, "attended" : 0})
 
         def unenroll_btn() :
-            if st.button("Unenroll!", key=id) :
-                unenroll_to_subject(student_id, id)
-                st.info("Unenrolled Successfully!")
-                st.rerun()
-
+            if st.button("Unenroll", type="primary", icon=":material/delete:", key=id) :
+                unenroll_confirmation(student_id, id)
         with cols[i % 2] :
             subject_card(sub["name"], sub["subject_code"], sub["section"], stats=[('', 'Total', stats['total']), ('', 'Attended', stats['attended'])], footer_callback=unenroll_btn)

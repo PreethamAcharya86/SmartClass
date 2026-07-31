@@ -1,6 +1,7 @@
 import streamlit as st
 from src.screens.choice_screen import choice_screen 
 
+
 def header_home() :
     st.header("SMART CLASS", text_alignment="center")
 
@@ -15,6 +16,7 @@ def navbar() :
                 st.session_state.user_role = None
                 st.session_state.is_logged_in = False
                 st.session_state['login_type'] = None
+
                 st.rerun()
 
         elif 'student_data' in st.session_state and st.session_state.user_role == 'student':

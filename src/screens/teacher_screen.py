@@ -3,6 +3,7 @@ from src.components.header import back, navbar
 from src.components.create_subject_dialog import create_subject_dialog
 from src.components.share_subject_dialog import share_subject_dialog
 from src.components.subject_card import subject_card
+from src.components.take_attendance import take_attendance
 from src.database.db import register_teacher, login_teacher, get_teacher_subjects
 import time
 
@@ -102,9 +103,6 @@ def teacher_dashboard() :
         manage_subjects(data)    
     if st.session_state.current_teacher_tab =='attendance_record' :
         attendance_record() 
-
-def take_attendance() :
-    st.subheader("Take Attendance") 
 
 def manage_subjects(data) :
     teacher_id = data['id']

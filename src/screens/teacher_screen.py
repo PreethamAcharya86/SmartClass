@@ -140,8 +140,6 @@ def manage_subjects(data) :
     else :
         st.info("No subject found!")
 
-    
-    
 
 def attendance_record() :
     st.subheader("Attendance records")

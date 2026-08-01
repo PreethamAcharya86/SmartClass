@@ -21,7 +21,21 @@ def student_screen() :
         return
     st.header("Students Login!")
 
-    img_source = st.camera_input("Possition your face in the center")
+    input_method = st.radio(
+    "Choose image source",
+    ["Camera", "Upload Image"],
+    horizontal=True
+)
+
+    img_source = None
+
+    if input_method == "Camera":
+        img_source = st.camera_input("Position your face in the center")
+    else:
+        img_source = st.file_uploader(
+            "Upload your face image",
+            type=["jpg", "jpeg", "png"]
+        )
     if img_source :
         img = np.array(Image.open(img_source))
         with st.spinner('AI is scanning') :

@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 from src.components.header import back, navbar
 from src.pipelines.face_pipeline import predict_attendance, get_face_embedding, train_classifier
-from src.pipelines.voice_pipeline import get_voice_embedding
 from src.components.subject_enroll_dialog import subject_enroll_dialog
 from src.components.subject_card import subject_card
 from src.components.unenroll_confirmation import unenroll_confirmation
@@ -64,14 +63,7 @@ def student_screen() :
         with st.container(border=True) :
             st.header("Student Registration")
             new_name = st.text_input("Name", placeholder="Enter your name")
-            st.subheader("Optional : Voice Enrollment")
-
-            st.info("Enroll for voice only attendence")
-            audio_data = None
-            try :
-                audio_data = st.audio_input("Record a short phrase of your voice!")
-            except Exception :
-                st.error('Audio data failed')
+            
             if st.button("Create Account") :
                 if new_name :
                     with st.spinner("Creating profile..") :
@@ -79,11 +71,7 @@ def student_screen() :
                         encodings = get_face_embedding(img)
                         if encodings :
                             face_emb = encodings[0].tolist()
-                            voice_emb = None
-
-                            if audio_data :
-                                voice_emb = get_voice_embedding(audio_data.read())
-                            response_data = create_student(new_name, face_embedding = face_emb, voice_embedding = voice_emb)
+                            response_data = create_student(new_name, face_embedding = face_emb, voice_embedding = None)
                             if response_data :
                                 train_classifier()
 

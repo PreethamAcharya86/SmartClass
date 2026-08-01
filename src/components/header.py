@@ -3,12 +3,12 @@ from src.screens.choice_screen import choice_screen
 
 
 def header_home() :
-    st.header("SMART CLASS", text_alignment="center")
+    st.header("Visual Attend", text_alignment="center")
 
 def navbar() :
     c1, c2 = st.columns(2)
     with c1 :
-        st.write("SMART CLASS")
+        st.write("VISUAL ATTEND")
     with c2 :
         if  'teacher_data' in st.session_state and st.session_state.user_role == 'teacher':
             if st.button("Logout", key='logout') :

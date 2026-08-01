@@ -1,3 +1,4 @@
+streamlit  # -> Frontend library
 numpy
 pandas
 scikit-learn
@@ -10,11 +11,4 @@ supabase  # -> database
 bcrypt
 segno    # -> QR code making
 Pillow  # -> img preprocess
-streamlit  # -> Frontend library
 
-librosa
-speechbrain
-torch
-torchaudio
-
-streamlit-cookies-manager

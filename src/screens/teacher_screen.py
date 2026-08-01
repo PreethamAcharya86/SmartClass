@@ -3,6 +3,7 @@ from src.components.header import back, navbar
 from src.components.create_subject_dialog import create_subject_dialog
 from src.components.share_subject_dialog import share_subject_dialog
 from src.components.subject_card import subject_card
+from src.components.attendance_records import attendance_record
 from src.components.take_attendance import take_attendance
 from src.database.db import register_teacher, login_teacher, get_teacher_subjects
 import time
@@ -139,7 +140,3 @@ def manage_subjects(data) :
 
     else :
         st.info("No subject found!")
-
-
-def attendance_record() :
-    st.subheader("Attendance records")

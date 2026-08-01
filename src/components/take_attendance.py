@@ -11,7 +11,7 @@ import pandas as pd
 def take_attendance() :
     teacher_data = st.session_state.teacher_data
     teacher_id = teacher_data["id"]
-    st.subheader("Take Attendance") 
+    st.subheader("Take Attendance")
 
     if 'attendance_images' not in st.session_state :
         st.session_state.attendance_images = []
@@ -45,10 +45,6 @@ def take_attendance() :
 
     c1, c2 = st.columns(2)
     with c1 :
-        if st.button("Clear all images", width="stretch", icon=":material/delete:", type="primary", disabled = len(images) == 0) :
-            st.session_state.attendance_images = []
-            st.rerun()
-    with c2 :
         if st.button("Run face analyzer", width="stretch", disabled=len(images) == 0) :
             with st.spinner("Deep scannning classroom images...") :
                 all_detected_id = {}
@@ -91,3 +87,7 @@ def take_attendance() :
                             "is_present" : bool(is_present)
                         })
                 attendance_result_dialog(pd.DataFrame(results), attendance_to_log)
+    with c2 :
+        if st.button("Clear all images", width="stretch", icon=":material/delete:", type="primary", disabled = len(images) == 0) :
+            st.session_state.attendance_images = []
+            st.rerun()

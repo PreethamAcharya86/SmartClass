@@ -7,4 +7,3 @@ venv_py313
 dist/
 *.py[cod]
 .vscode
-.devcontainer

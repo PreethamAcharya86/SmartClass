@@ -626,7 +626,10 @@ div[role="dialog"] * {
 [data-testid="stAppViewContainer"] textarea,
 [data-testid="stAppViewContainer"] select,
 [data-testid="stAppViewContainer"] option,
-input, textarea, select, option {
+input,
+textarea,
+select,
+option {
   background: var(--white) !important;
   color: var(--gray-900) !important;
   border: 1px solid var(--blue-300) !important;

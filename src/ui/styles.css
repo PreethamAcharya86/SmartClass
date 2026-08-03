@@ -1,37 +1,41 @@
 :root {
-  --blue-50: #EBF3FF;
-  --blue-100: #D0E2FF;
-  --blue-200: #A6C8FF;
-  --blue-400: #60A5FA;
-  --blue-500: #2563EB;
-  --blue-600: #1D4ED8;
-  --blue-700: #1E40AF;
-  --blue-800: #1E3A8A;
-  --blue-900: #0F172A;
-  --white: #FFFFFF;
-  --gray-50: #F8FAFC;
-  --gray-100: #F1F5F9;
-  --gray-200: #E2E8F0;
-  --gray-400: #94A3B8;
+  --blue-50: #ebf3ff;
+  --blue-100: #d0e2ff;
+  --blue-200: #a6c8ff;
+  --blue-400: #60a5fa;
+  --blue-500: #2563eb;
+  --blue-600: #1d4ed8;
+  --blue-700: #1e40af;
+  --blue-800: #1e3a8a;
+  --blue-900: #0f172a;
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-400: #94a3b8;
   --gray-600: #475569;
-  --gray-800: #1E293B;
+  --gray-800: #1e293b;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
   --radius-pill: 999px;
   --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 4px 14px rgba(37, 99, 235, 0.10);
-  --shadow-lg: 0 10px 25px rgba(37, 99, 235, 0.16);
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --shadow-md: 0 4px 14px rgba(37, 99, 235, 0.1);
+  --shadow-lg: 0 10px 25px rgba(5, 8, 15, 0.16);
+  --font:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   overflow: hidden;
 }
 
-html, body, [data-testid="stAppViewContainer"] {
+html,
+body,
+[data-testid="stAppViewContainer"] {
   font-family: var(--font) !important;
   background-color: var(--gray-50) !important;
   color: var(--gray-800) !important;
@@ -52,7 +56,8 @@ html, body, [data-testid="stAppViewContainer"] {
 }
 
 /* Completely collapse Streamlit's built-in header to pull app content to top edge */
-header[data-testid="stHeader"], [data-testid="stHeader"] {
+header[data-testid="stHeader"],
+[data-testid="stHeader"] {
   display: none !important;
   height: 0 !important;
   min-height: 0 !important;
@@ -61,7 +66,12 @@ header[data-testid="stHeader"], [data-testid="stHeader"] {
   visibility: hidden !important;
 }
 
-#MainMenu, footer, [data-testid="stToolbar"], [data-testid="stDecoration"], [data-testid="stDeployButton"], .stDeployButton {
+#MainMenu,
+footer,
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+[data-testid="stDeployButton"],
+.stDeployButton {
   visibility: hidden !important;
   display: none !important;
   height: 0 !important;
@@ -84,7 +94,7 @@ header[data-testid="stHeader"], [data-testid="stHeader"] {
 }
 
 .material-symbols-outlined {
-  font-family: 'Material Symbols Outlined' !important;
+  font-family: "Material Symbols Outlined" !important;
   font-weight: normal;
   font-style: normal;
   font-size: 22px;
@@ -154,7 +164,10 @@ header[data-testid="stHeader"], [data-testid="stHeader"] {
   padding: 1.5rem 1.2rem;
   text-align: center;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.22s cubic-bezier(0.4, 0, 0.2, 1);
   margin-bottom: 0.8rem;
 }
 
@@ -174,7 +187,9 @@ header[data-testid="stHeader"], [data-testid="stHeader"] {
   align-items: center;
   justify-content: center;
   margin: 0 auto 0.6rem;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .role-card:hover .role-icon-box {
@@ -205,7 +220,9 @@ header[data-testid="stHeader"], [data-testid="stHeader"] {
   padding: 1.1rem 1.2rem 0.7rem;
   margin-bottom: 0.8rem;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .subject-card:hover {
@@ -272,7 +289,9 @@ header[data-testid="stHeader"], [data-testid="stHeader"] {
   padding: 1.1rem 1rem;
   text-align: center;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .feature-card:hover {
@@ -333,7 +352,8 @@ header[data-testid="stHeader"], [data-testid="stHeader"] {
   margin: 0.5rem auto;
 }
 
-[data-testid="stForm"], .auth-container {
+[data-testid="stForm"],
+.auth-container {
   max-width: 420px !important;
   margin: 0 auto !important;
 }
@@ -373,7 +393,11 @@ div.stFormSubmitButton > button {
   border-radius: var(--radius-sm) !important;
   font-weight: 600 !important;
   letter-spacing: 0.01em !important;
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s ease, border-color 0.2s ease !important;
+  transition:
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.2s ease,
+    border-color 0.2s ease !important;
 }
 
 div.stButton > button:hover,
@@ -391,32 +415,45 @@ div.stFormSubmitButton > button:active {
 }
 
 /* Primary Button (Solid Gradient Blue with Lift & Glow Hover) */
-button[kind="primary"], [data-testid="baseButton-primary"] {
-  background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-700) 100%) !important;
+button[kind="primary"],
+[data-testid="baseButton-primary"] {
+  background: linear-gradient(
+    135deg,
+    var(--blue-600) 0%,
+    var(--blue-700) 100%
+  ) !important;
   color: #ffffff !important;
   box-shadow: 0 8px 20px rgba(29, 78, 216, 0.18) !important;
 }
 
-button[kind="primary"]:hover, [data-testid="baseButton-primary"]:hover {
-  background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-800) 100%) !important;
+button[kind="primary"]:hover,
+[data-testid="baseButton-primary"]:hover {
+  background: linear-gradient(
+    135deg,
+    var(--blue-700) 0%,
+    var(--blue-800) 100%
+  ) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 10px 24px rgba(29, 78, 216, 0.28) !important;
 }
 
-button[kind="primary"]:active, [data-testid="baseButton-primary"]:active {
+button[kind="primary"]:active,
+[data-testid="baseButton-primary"]:active {
   transform: translateY(0px) !important;
   box-shadow: 0 4px 10px rgba(29, 78, 216, 0.16) !important;
 }
 
 /* Secondary Button (Clean White with Blue Accent Border & Soft Tint Hover) */
-button[kind="secondary"], [data-testid="baseButton-secondary"] {
+button[kind="secondary"],
+[data-testid="baseButton-secondary"] {
   background: var(--white) !important;
   border: 1.5px solid var(--blue-200) !important;
   color: var(--blue-700) !important;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
 }
 
-button[kind="secondary"]:hover, [data-testid="baseButton-secondary"]:hover {
+button[kind="secondary"]:hover,
+[data-testid="baseButton-secondary"]:hover {
   background: var(--blue-50) !important;
   border-color: var(--blue-400) !important;
   color: var(--blue-800) !important;
@@ -424,7 +461,8 @@ button[kind="secondary"]:hover, [data-testid="baseButton-secondary"]:hover {
   box-shadow: 0 6px 14px rgba(37, 99, 235, 0.12) !important;
 }
 
-button[kind="secondary"]:active, [data-testid="baseButton-secondary"]:active {
+button[kind="secondary"]:active,
+[data-testid="baseButton-secondary"]:active {
   transform: translateY(0px) !important;
   box-shadow: 0 2px 5px rgba(15, 23, 42, 0.04) !important;
 }
@@ -439,7 +477,9 @@ button[kind="secondary"]:active, [data-testid="baseButton-secondary"]:active {
   background: var(--white) !important;
   color: var(--gray-900) !important;
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12) !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease !important;
 }
 
 [data-testid="stTextInput"] input::placeholder,
@@ -560,6 +600,55 @@ button[kind="secondary"]:active, [data-testid="baseButton-secondary"]:active {
   color: var(--white) !important;
   border-radius: var(--radius-sm) !important;
   box-shadow: var(--shadow-lg) !important;
+}
+
+/* Strong global overrides for deployed Streamlit DOM */
+[data-testid="stAppViewContainer"] div[role="dialog"],
+[data-testid="stAppViewContainer"] .stDialog,
+[data-testid="stAppViewContainer"] [data-testid="stDialog"],
+[data-testid="stAppViewContainer"] [data-testid="stDialog"] div[role="dialog"],
+div[role="dialog"] {
+  background-color: var(--white) !important;
+  color: var(--gray-900) !important;
+  border: 1px solid var(--gray-200) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18) !important;
+}
+
+[data-testid="stAppViewContainer"] div[role="dialog"] *,
+[data-testid="stAppViewContainer"] .stDialog *,
+[data-testid="stAppViewContainer"] [data-testid="stDialog"] *,
+div[role="dialog"] * {
+  color: var(--gray-900) !important;
+}
+
+[data-testid="stAppViewContainer"] input,
+[data-testid="stAppViewContainer"] textarea,
+[data-testid="stAppViewContainer"] select,
+[data-testid="stAppViewContainer"] option,
+input, textarea, select, option {
+  background: var(--white) !important;
+  color: var(--gray-900) !important;
+  border: 1px solid var(--blue-300) !important;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12) !important;
+}
+
+[data-testid="stAppViewContainer"] select,
+select,
+[data-testid="stAppViewContainer"] option,
+option {
+  background: var(--white) !important;
+  color: var(--gray-900) !important;
+}
+
+/* Ensure dialog buttons stay white/black */
+[data-testid="stAppViewContainer"] div[role="dialog"] button,
+[data-testid="stAppViewContainer"] div[role="dialog"] .stButton > button,
+[data-testid="stAppViewContainer"] div[role="dialog"] .stButton button,
+button {
+  background: var(--white) !important;
+  color: var(--gray-900) !important;
+  border: 1px solid var(--gray-900) !important;
 }
 
 /* Responsive Media Queries */

@@ -3,7 +3,9 @@ __pycache__/
 venv/
 venv311/
 venv_py313
-.streamlit/
+# Keep Streamlit config in the repo so deploy can use the same theme
+# Do not commit secrets.toml; use Streamlit Cloud secrets instead.
+.streamlit/secrets.toml
 dist/
 *.py[cod]
 .vscode

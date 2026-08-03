@@ -8,8 +8,10 @@ from src.screens.choice_screen import  choice_screen
 
 def main() :
     st.set_page_config(
-        page_title="VisualAttend - Making Attendance Faster Using AI",
-        page_icon="src/Images/Project_icon.png"
+        page_title="VisualAttend — AI-Powered Attendance",
+        page_icon="src/Images/Project_icon.png",
+        layout="wide",
+        initial_sidebar_state="collapsed",
     )
     if 'login_type' not in st.session_state :
         st.session_state['login_type'] = None

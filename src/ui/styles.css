@@ -522,7 +522,11 @@ button[kind="secondary"]:active,
 html body [data-testid="stAppViewContainer"] div[role="dialog"],
 html body [data-testid="stAppViewContainer"] .stDialog,
 html body [data-testid="stAppViewContainer"] [data-testid="stDialog"],
-html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] div[role="dialog"],
+html
+  body
+  [data-testid="stAppViewContainer"]
+  [data-testid="stDialog"]
+  div[role="dialog"],
 html body div[role="dialog"] {
   background-color: var(--white) !important;
   color: var(--gray-900) !important;
@@ -539,9 +543,24 @@ html body div[role="dialog"] * {
 }
 
 html body [data-testid="stAppViewContainer"] div[role="dialog"] button,
-html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] div[role="dialog"] button,
-html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] .stButton > button,
-html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] .stButton button,
+html
+  body
+  [data-testid="stAppViewContainer"]
+  [data-testid="stDialog"]
+  div[role="dialog"]
+  button,
+html
+  body
+  [data-testid="stAppViewContainer"]
+  [data-testid="stDialog"]
+  .stButton
+  > button,
+html
+  body
+  [data-testid="stAppViewContainer"]
+  [data-testid="stDialog"]
+  .stButton
+  button,
 html body [data-testid="stDialog"] div[role="dialog"] button,
 html body [data-testid="stDialog"] div[role="dialog"] .stButton > button,
 html body [data-testid="stDialog"] div[role="dialog"] .stButton button {
@@ -552,8 +571,20 @@ html body [data-testid="stDialog"] div[role="dialog"] .stButton button {
 }
 
 html body [data-testid="stAppViewContainer"] div[role="dialog"] button:hover,
-html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] div[role="dialog"] .stButton > button:hover,
-html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] div[role="dialog"] .stButton button:hover,
+html
+  body
+  [data-testid="stAppViewContainer"]
+  [data-testid="stDialog"]
+  div[role="dialog"]
+  .stButton
+  > button:hover,
+html
+  body
+  [data-testid="stAppViewContainer"]
+  [data-testid="stDialog"]
+  div[role="dialog"]
+  .stButton
+  button:hover,
 html body [data-testid="stDialog"] div[role="dialog"] button:hover,
 html body [data-testid="stDialog"] div[role="dialog"] .stButton > button:hover,
 html body [data-testid="stDialog"] div[role="dialog"] .stButton button:hover {

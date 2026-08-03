@@ -430,16 +430,124 @@ button[kind="secondary"]:active, [data-testid="baseButton-secondary"]:active {
 }
 
 /* Form Inputs */
-[data-testid="stTextInput"] input, [data-testid="stSelectbox"] select {
-  border: 1.5px solid var(--gray-200) !important;
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea,
+[data-testid="stNumberInput"] input,
+[data-testid="stSelectbox"] select {
+  border: 1px solid var(--blue-300) !important;
   border-radius: var(--radius-sm) !important;
   background: var(--white) !important;
+  color: var(--gray-900) !important;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12) !important;
   transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-[data-testid="stTextInput"] input:focus {
+[data-testid="stTextInput"] input::placeholder,
+[data-testid="stTextArea"] textarea::placeholder,
+[data-testid="stNumberInput"] input::placeholder,
+[data-testid="stSelectbox"] select::placeholder {
+  color: var(--gray-400) !important;
+}
+
+[data-testid="stTextInput"] input:focus,
+[data-testid="stTextArea"] textarea:focus,
+[data-testid="stNumberInput"] input:focus,
+[data-testid="stSelectbox"] select:focus {
   border-color: var(--blue-500) !important;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14) !important;
+}
+
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea,
+[data-testid="stNumberInput"] input,
+[data-testid="stSelectbox"] select {
+  color: var(--gray-900) !important;
+}
+
+[data-testid="stSelectbox"] select option {
+  color: var(--gray-900) !important;
+  background: var(--white) !important;
+}
+
+/* Dialog Styles */
+[data-testid="stDialog"] {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+[data-testid="stDialog"] > div {
+  background: transparent !important;
+}
+
+[data-testid="stDialog"] div[role="dialog"] {
+  background-color: var(--white) !important;
+  color: var(--gray-900) !important;
+  border: 1px solid var(--gray-200) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18) !important;
+}
+
+[data-testid="stDialog"] div[role="dialog"] h1,
+[data-testid="stDialog"] div[role="dialog"] h2,
+[data-testid="stDialog"] div[role="dialog"] h3,
+[data-testid="stDialog"] div[role="dialog"] h4,
+[data-testid="stDialog"] div[role="dialog"] h5,
+[data-testid="stDialog"] div[role="dialog"] h6 {
+  color: var(--gray-900) !important;
+}
+
+[data-testid="stDialog"] div[role="dialog"] p,
+[data-testid="stDialog"] div[role="dialog"] span,
+[data-testid="stDialog"] div[role="dialog"] label,
+[data-testid="stDialog"] div[role="dialog"] div,
+[data-testid="stDialog"] div[role="dialog"] button {
+  color: var(--gray-900) !important;
+}
+
+/* Dialog Button White Background */
+[data-testid="stDialog"] div[role="dialog"] button,
+[data-testid="stDialog"] div[role="dialog"] [data-testid="stButton"],
+[data-testid="stDialog"] div[role="dialog"] .stButton > button,
+[data-testid="stDialog"] div[role="dialog"] .stButton button {
+  background: var(--white) !important;
+  color: var(--gray-900) !important;
+  border: 1px solid var(--gray-900) !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-testid="stDialog"] div[role="dialog"] button:hover,
+[data-testid="stDialog"] div[role="dialog"] .stButton > button:hover,
+[data-testid="stDialog"] div[role="dialog"] .stButton button:hover {
+  background: var(--gray-50) !important;
+}
+
+/* Table row striping */
+[data-testid="stDataFrame"] table,
+[data-testid="stTable"] table,
+.stDataFrame table {
+  background: var(--white) !important;
+  color: var(--gray-900) !important;
+}
+
+[data-testid="stDataFrame"] table tbody tr:nth-child(odd),
+[data-testid="stTable"] table tbody tr:nth-child(odd),
+.stDataFrame table tbody tr:nth-child(odd) {
+  background-color: var(--white) !important;
+}
+
+[data-testid="stDataFrame"] table tbody tr:nth-child(even),
+[data-testid="stTable"] table tbody tr:nth-child(even),
+.stDataFrame table tbody tr:nth-child(even) {
+  background-color: var(--blue-50) !important;
+}
+
+[data-testid="stDataFrame"] table th,
+[data-testid="stDataFrame"] table td,
+[data-testid="stTable"] table th,
+[data-testid="stTable"] table td,
+.stDataFrame table th,
+.stDataFrame table td {
+  color: var(--gray-900) !important;
 }
 
 [data-testid="stAlert"] {

@@ -519,7 +519,11 @@ button[kind="secondary"]:active,
   background: transparent !important;
 }
 
-[data-testid="stDialog"] div[role="dialog"] {
+html body [data-testid="stAppViewContainer"] div[role="dialog"],
+html body [data-testid="stAppViewContainer"] .stDialog,
+html body [data-testid="stAppViewContainer"] [data-testid="stDialog"],
+html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] div[role="dialog"],
+html body div[role="dialog"] {
   background-color: var(--white) !important;
   color: var(--gray-900) !important;
   border: 1px solid var(--gray-200) !important;
@@ -527,37 +531,32 @@ button[kind="secondary"]:active,
   box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18) !important;
 }
 
-[data-testid="stDialog"] div[role="dialog"] h1,
-[data-testid="stDialog"] div[role="dialog"] h2,
-[data-testid="stDialog"] div[role="dialog"] h3,
-[data-testid="stDialog"] div[role="dialog"] h4,
-[data-testid="stDialog"] div[role="dialog"] h5,
-[data-testid="stDialog"] div[role="dialog"] h6 {
+html body [data-testid="stAppViewContainer"] div[role="dialog"] *,
+html body [data-testid="stAppViewContainer"] .stDialog *,
+html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] *,
+html body div[role="dialog"] * {
   color: var(--gray-900) !important;
 }
 
-[data-testid="stDialog"] div[role="dialog"] p,
-[data-testid="stDialog"] div[role="dialog"] span,
-[data-testid="stDialog"] div[role="dialog"] label,
-[data-testid="stDialog"] div[role="dialog"] div,
-[data-testid="stDialog"] div[role="dialog"] button {
-  color: var(--gray-900) !important;
-}
-
-/* Dialog Button White Background */
-[data-testid="stDialog"] div[role="dialog"] button,
-[data-testid="stDialog"] div[role="dialog"] [data-testid="stButton"],
-[data-testid="stDialog"] div[role="dialog"] .stButton > button,
-[data-testid="stDialog"] div[role="dialog"] .stButton button {
+html body [data-testid="stAppViewContainer"] div[role="dialog"] button,
+html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] div[role="dialog"] button,
+html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] .stButton > button,
+html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] .stButton button,
+html body [data-testid="stDialog"] div[role="dialog"] button,
+html body [data-testid="stDialog"] div[role="dialog"] .stButton > button,
+html body [data-testid="stDialog"] div[role="dialog"] .stButton button {
   background: var(--white) !important;
   color: var(--gray-900) !important;
-  border: 1px solid var(--gray-900) !important;
+  border: 1px solid var(--gray-200) !important;
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
 }
 
-[data-testid="stDialog"] div[role="dialog"] button:hover,
-[data-testid="stDialog"] div[role="dialog"] .stButton > button:hover,
-[data-testid="stDialog"] div[role="dialog"] .stButton button:hover {
+html body [data-testid="stAppViewContainer"] div[role="dialog"] button:hover,
+html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] div[role="dialog"] .stButton > button:hover,
+html body [data-testid="stAppViewContainer"] [data-testid="stDialog"] div[role="dialog"] .stButton button:hover,
+html body [data-testid="stDialog"] div[role="dialog"] button:hover,
+html body [data-testid="stDialog"] div[role="dialog"] .stButton > button:hover,
+html body [data-testid="stDialog"] div[role="dialog"] .stButton button:hover {
   background: var(--gray-50) !important;
 }
 
@@ -625,11 +624,7 @@ div[role="dialog"] * {
 [data-testid="stAppViewContainer"] input,
 [data-testid="stAppViewContainer"] textarea,
 [data-testid="stAppViewContainer"] select,
-[data-testid="stAppViewContainer"] option,
-input,
-textarea,
-select,
-option {
+[data-testid="stAppViewContainer"] option {
   background: var(--white) !important;
   color: var(--gray-900) !important;
   border: 1px solid var(--blue-300) !important;
@@ -637,9 +632,7 @@ option {
 }
 
 [data-testid="stAppViewContainer"] select,
-select,
-[data-testid="stAppViewContainer"] option,
-option {
+[data-testid="stAppViewContainer"] option {
   background: var(--white) !important;
   color: var(--gray-900) !important;
 }
@@ -647,11 +640,10 @@ option {
 /* Ensure dialog buttons stay white/black */
 [data-testid="stAppViewContainer"] div[role="dialog"] button,
 [data-testid="stAppViewContainer"] div[role="dialog"] .stButton > button,
-[data-testid="stAppViewContainer"] div[role="dialog"] .stButton button,
-button {
+[data-testid="stAppViewContainer"] div[role="dialog"] .stButton button {
   background: var(--white) !important;
   color: var(--gray-900) !important;
-  border: 1px solid var(--gray-900) !important;
+  border: 1px solid var(--gray-200) !important;
 }
 
 /* Responsive Media Queries */

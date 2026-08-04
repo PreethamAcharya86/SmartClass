@@ -9,7 +9,7 @@ from src.screens.choice_screen import  choice_screen
 def main() :
     st.set_page_config(
         page_title="VisualAttend — AI-Powered Attendance",
-        page_icon="src/Images/Project_icon.png",
+        page_icon="src/Images/icon.png",
         layout="wide",
         initial_sidebar_state="collapsed",
     )

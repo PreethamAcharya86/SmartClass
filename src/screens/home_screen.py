@@ -28,7 +28,7 @@ def home_screen():
             st.rerun()
 
     with col2:
-        st.image("src/Images/Project_icon.png", width=220)
+        st.image("src/Images/Project_icon.png", width=400)
 
     st.markdown(
         """

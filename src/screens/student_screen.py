@@ -84,7 +84,7 @@ def student_screen():
                             encodings = get_face_embedding(img)
                             if encodings:
                                 face_emb = encodings[0].tolist()
-                                response_data = create_student(new_name, face_embedding=face_emb, voice_embedding=None)
+                                response_data = create_student(new_name, face_embedding=face_emb)
                                 if response_data:
                                     train_classifier()
 

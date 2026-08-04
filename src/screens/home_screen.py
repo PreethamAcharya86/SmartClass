@@ -1,23 +1,42 @@
+import base64
+from pathlib import Path
+
 import streamlit as st
 from src.components.header import navbar
 from src.ui.base_layout import style_base_layout
 from src.components.footer import footer
 
 
+def _render_image_card(image_filename: str, alt_text: str, width: int = 420):
+    image_path = Path(__file__).resolve().parents[1] / "Images" / image_filename
+    with image_path.open("rb") as image_file:
+        encoded_image = base64.b64encode(image_file.read()).decode("ascii")
+
+    st.markdown(
+        f"""
+        <div class="hero-visual-card">
+            <img src="data:image/png;base64,{encoded_image}" alt="{alt_text}" style="max-width:{width}px;" />
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def home_screen():
     style_base_layout()
     navbar()
 
-    col1, col2 = st.columns([1.3, 0.7], vertical_alignment="center")
+    col1, col2 = st.columns([1.15, 0.85], vertical_alignment="center")
 
     with col1:
         st.markdown(
             """
             <div class="hero-card">
+                <div class="hero-badge">AI-powered attendance</div>
                 <h2>Automate Attendance with AI Face Recognition</h2>
                 <p>
-                    Welcome to <strong>VisualAttend</strong> — a modern, fast classroom attendance system.
-                    Teachers can scan classroom photos in seconds, and students get instant visibility into their attendance performance.
+                    Welcome to <strong>VisualAttend</strong> — a polished, fast classroom attendance experience designed for modern schools.
+                    Teachers can scan classroom photos in seconds, and students gain instant visibility into their attendance performance.
                 </p>
             </div>
             """,
@@ -28,7 +47,16 @@ def home_screen():
             st.rerun()
 
     with col2:
-        st.image("src/Images/Project_icon.png", width=400)
+        _render_image_card("hero_section.png", "VisualAttend hero illustration", width=460)
+        st.markdown(
+            """
+            <div class="hero-note-card">
+                <h4>Built for fast, modern classrooms</h4>
+                <p>From instant face-based sign-in to cleaner attendance insights, every detail is designed to feel effortless.</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
     st.markdown(
         """

@@ -1,3 +1,6 @@
+import base64
+from pathlib import Path
+
 import streamlit as st
 from src.components.header import back, navbar
 from src.components.create_subject_dialog import create_subject_dialog
@@ -101,17 +104,32 @@ def teacher_screen_register():
                     st.rerun()
 
 
-def teacher_dashboard():
-    data = st.session_state.teacher_data
+def _render_teacher_hero(image_filename: str, title: str, subtitle: str):
+    image_path = Path(__file__).resolve().parents[1] / "Images" / image_filename
+    with image_path.open("rb") as image_file:
+        encoded_image = base64.b64encode(image_file.read()).decode("ascii")
 
     st.markdown(
         f"""
-        <div style="margin-bottom:1rem;">
-            <h2 style="margin:0; color:var(--blue-900);">Hello, {data['name']}</h2>
-            <p style="color:var(--gray-600); margin:0.2rem 0 0; font-size:0.93rem;">Manage subjects and take attendance.</p>
+        <div class="teacher-dashboard-hero">
+            <div class="teacher-dashboard-copy">
+                <h2>{title}</h2>
+                <p>{subtitle}</p>
+            </div>
+            <img src="data:image/png;base64,{encoded_image}" alt="{title}" />
         </div>
         """,
         unsafe_allow_html=True,
+    )
+
+
+def teacher_dashboard():
+    data = st.session_state.teacher_data
+
+    _render_teacher_hero(
+        "teacher_dashboard.png",
+        f"Hello, {data['name']}",
+        "Manage subjects, inspect attendance, and keep your classroom workflow running smoothly.",
     )
 
     if 'current_teacher_tab' not in st.session_state:

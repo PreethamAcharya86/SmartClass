@@ -1,5 +1,26 @@
+import base64
+from pathlib import Path
+
 import streamlit as st
 from src.ui.base_layout import style_base_layout
+
+
+def _render_role_card(filename: str, title: str, description: str):
+    image_path = Path(__file__).resolve().parents[1] / "Images" / filename
+
+    with image_path.open("rb") as image_file:
+        encoded_image = base64.b64encode(image_file.read()).decode("ascii")
+
+    st.markdown(
+        f"""
+        <div class="role-card role-card--select">
+            <img src="data:image/png;base64,{encoded_image}" alt="{title}" />
+            <h3>{title}</h3>
+            <p>{description}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def choice_screen():
@@ -11,48 +32,30 @@ def choice_screen():
 
     st.markdown(
         """
-        <div style="text-align:center; margin:0.8rem 0 1.2rem;">
-            <h2 style="margin:0; color:var(--blue-900); font-size:1.7rem; font-weight:800;">
-                Choose Your Role
-            </h2>
-            <p style="margin:0.3rem 0 0; color:var(--gray-600); font-size:0.93rem;">
-                Select your account type to proceed to your portal.
-            </p>
+        <div class="choice-hero">
+            <h2>Choose Your Role</h2>
+            <p>Select your account type to continue to your portal.</p>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2, gap="medium")
     with col1:
-        st.markdown(
-            """
-            <div class="role-card">
-                <div class="role-icon-box">
-                    <span class="material-symbols-outlined" style="font-size:30px;">school</span>
-                </div>
-                <h3>Student</h3>
-                <p>Log in with face scan, enroll in subjects, and track your attendance progress.</p>
-            </div>
-            """,
-            unsafe_allow_html=True,
+        _render_role_card(
+            "studentIcon.png",
+            "Student",
+            "Log in with face scan, enroll in subjects, and track your attendance progress.",
         )
         if st.button("Continue as Student", type='primary', use_container_width=True, icon=":material/school:"):
             st.session_state['login_type'] = "student"
             st.rerun()
 
     with col2:
-        st.markdown(
-            """
-            <div class="role-card">
-                <div class="role-icon-box">
-                    <span class="material-symbols-outlined" style="font-size:30px;">person</span>
-                </div>
-                <h3>Teacher</h3>
-                <p>Manage subject rosters, scan classroom photos, and generate attendance reports.</p>
-            </div>
-            """,
-            unsafe_allow_html=True,
+        _render_role_card(
+            "teacherIcon.png",
+            "Teacher",
+            "Manage subject rosters, scan classroom photos, and generate attendance reports.",
         )
         if st.button("Continue as Teacher", type='primary', use_container_width=True, icon=":material/person:"):
             st.session_state['login_type'] = "teacher"

@@ -127,7 +127,7 @@ def teacher_dashboard():
     data = st.session_state.teacher_data
 
     _render_teacher_hero(
-        "teacher_dashboard.png",
+        "teacherIcon.png",
         f"Hello, {data['name']}",
         "Manage subjects, inspect attendance, and keep your classroom workflow running smoothly.",
     )

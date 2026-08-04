@@ -188,17 +188,55 @@ footer,
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.2rem;
+  width: 100%;
 }
 
 .hero-visual-card img {
   width: 100%;
-  max-width: 460px;
+  max-width: 580px;
   border-radius: 12px;
   object-fit: contain;
 }
 
+.hero-visual-card--large {
+  padding: 1rem;
+}
+
+.hero-inline-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: stretch;
+  margin: 0.2rem 0 0.4rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-icon-card {
+  flex: 0 0 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(145deg, var(--white), var(--blue-50));
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+.hero-icon-card img {
+  width: 100%;
+  max-width: 220px;
+  object-fit: contain;
+}
+
+.hero-action-wrapper {
+  margin-top: 0.95rem;
+}
+
 .hero-note-card {
+  flex: 1;
+  min-width: 0;
   background: var(--white);
   border: 1px solid rgba(37, 99, 235, 0.14);
   border-radius: var(--radius-md);
@@ -458,8 +496,12 @@ footer,
 
 /* Camera Input */
 [data-testid="stCameraInput"] {
-  max-width: 420px !important;
+  max-width: 560px !important;
   margin: 0 auto 0.8rem auto !important;
+}
+
+[data-testid="stCameraInput"] > section {
+  min-height: 360px !important;
 }
 
 [data-testid="stCameraInput"] > section {

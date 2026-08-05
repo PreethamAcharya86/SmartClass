@@ -12,3 +12,6 @@ bcrypt
 segno    # -> QR code making
 Pillow  # -> img preprocess
 
+# Pin starlette to avoid GZipResponder signature incompatibility with Streamlit
+starlette<0.28
+

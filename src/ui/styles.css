@@ -238,43 +238,35 @@ footer,
 }
 
 .page-action-row {
-  display: none;
-}
-
-.page-action-row + div,
-.page-action-row + div + div {
   display: flex !important;
-  flex-direction: row !important;
   justify-content: space-between !important;
   align-items: center !important;
-  width: auto !important;
-  max-width: none !important;
-  margin-bottom: 0 !important;
   gap: 0.75rem !important;
+  width: 100% !important;
+  flex-wrap: nowrap !important;
+  margin-bottom: 1rem !important;
 }
 
-.page-action-row + div,
-.page-action-row + div + div {
+.page-action-row .stHorizontalBlock {
   display: flex !important;
-  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   justify-content: space-between !important;
   align-items: center !important;
-  width: auto !important;
-  max-width: none !important;
-  margin-bottom: 0 !important;
-  gap: 0.75rem !important;
+  width: 100% !important;
 }
 
-.page-action-row + div > div,
-.page-action-row + div + div > div {
-  width: auto !important;
-  max-width: none !important;
-}
-
-.page-action-row + div .stButton > button,
-.page-action-row + div + div .stButton > button {
-  width: auto !important;
+.page-action-row .stHorizontalBlock > .stColumn {
+  flex: 0 0 auto !important;
   min-width: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+.page-action-row .stButton {
+  width: auto !important;
+}
+
+.page-action-row .stButton > button {
   white-space: nowrap !important;
 }
 
@@ -315,6 +307,49 @@ footer,
 }
 
 @media (max-width: 768px) {
+  .page-action-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .page-action-row .stHorizontalBlock {
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .page-action-row .stHorizontalBlock > .stColumn {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .page-action-row .stElementContainer.st-key-back_btn,
+  .page-action-row .stElementContainer.st-key-logout_student,
+  .page-action-row .stElementContainer.st-key-logout_teacher {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .page-action-row .stButton {
+    width: auto !important;
+  }
+
+  .page-action-row .stButton > button {
+    width: auto !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+  }
+
   .page-action-row + div,
   .page-action-row + div + div {
     display: flex !important;

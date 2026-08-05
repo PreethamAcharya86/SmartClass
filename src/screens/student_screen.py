@@ -131,7 +131,7 @@ def student_dashboard():
     student_data = st.session_state.student_data
     student_id = student_data["student_id"]
 
-    st.markdown('<div class="page-action-row"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-action-row">', unsafe_allow_html=True)
     col_left, col_right = st.columns([1, 0.24], gap="small")
     with col_left:
         back()
@@ -144,6 +144,7 @@ def student_dashboard():
             st.session_state['login_type'] = None
             st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
     _render_student_hero(
         "student_dashboard.png",

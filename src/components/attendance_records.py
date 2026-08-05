@@ -52,9 +52,12 @@ def attendance_record() :
     display_df = ( summary.sort_values(by="ts_group", ascending=False)
                   [["Time", "Subject", "Subject Code", "Attendance Status"]]
     )
-    st.dataframe(display_df, width="stretch", hide_index=True, column_config={
-        "Time": st.column_config.TextColumn(width="small"),
-        "Subject": st.column_config.TextColumn(width="small"),
-        "Subject Code": st.column_config.TextColumn(width="small"),
-        "Attendance Status": st.column_config.TextColumn(width="medium"),
-    },)
+    
+    html = "<div class='modern-table-wrapper'><table class='modern-table'>"
+    html += "<thead><tr><th>Time</th><th>Subject</th><th>Code</th><th>Status</th></tr></thead>"
+    html += "<tbody>"
+    for _, row in display_df.iterrows():
+        html += f"<tr><td>{row['Time']}</td><td>{row['Subject']}</td><td>{row['Subject Code']}</td><td>{row['Attendance Status']}</td></tr>"
+    html += "</tbody></table></div>"
+    
+    st.markdown(html, unsafe_allow_html=True)

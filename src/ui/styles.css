@@ -237,36 +237,31 @@ footer,
   margin-bottom: 1.5rem;
 }
 
-.page-action-row {
+div[data-testid="stHorizontalBlock"]:has(.st-key-back_btn) {
   display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   justify-content: space-between !important;
   align-items: center !important;
-  gap: 0.75rem !important;
   width: 100% !important;
-  flex-wrap: nowrap !important;
+  gap: 0.75rem !important;
   margin-bottom: 1rem !important;
 }
 
-.page-action-row .stHorizontalBlock {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  width: 100% !important;
-}
-
-.page-action-row .stHorizontalBlock > .stColumn {
+div[data-testid="stHorizontalBlock"]:has(.st-key-back_btn) > div[data-testid="stColumn"] {
   flex: 0 0 auto !important;
   min-width: 0 !important;
   width: auto !important;
   max-width: none !important;
 }
 
-.page-action-row .stButton {
+div[data-testid="stHorizontalBlock"]:has(.st-key-back_btn) .stButton {
   width: auto !important;
 }
 
-.page-action-row .stButton > button {
+div[data-testid="stHorizontalBlock"]:has(.st-key-back_btn) .stButton > button {
+  width: auto !important;
+  min-width: 0 !important;
   white-space: nowrap !important;
 }
 
@@ -307,72 +302,6 @@ footer,
 }
 
 @media (max-width: 768px) {
-  .page-action-row {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    width: 100% !important;
-    gap: 0.75rem !important;
-    flex-wrap: nowrap !important;
-  }
-
-  .page-action-row .stHorizontalBlock {
-    flex-wrap: nowrap !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    width: 100% !important;
-  }
-
-  .page-action-row .stHorizontalBlock > .stColumn {
-    flex: 0 0 auto !important;
-    min-width: 0 !important;
-    width: auto !important;
-    max-width: none !important;
-  }
-
-  .page-action-row .stElementContainer.st-key-back_btn,
-  .page-action-row .stElementContainer.st-key-logout_student,
-  .page-action-row .stElementContainer.st-key-logout_teacher {
-    display: inline-flex !important;
-    flex: 0 0 auto !important;
-    min-width: 0 !important;
-    width: auto !important;
-    max-width: none !important;
-  }
-
-  .page-action-row .stButton {
-    width: auto !important;
-  }
-
-  .page-action-row .stButton > button {
-    width: auto !important;
-    min-width: 0 !important;
-    white-space: nowrap !important;
-  }
-
-  .page-action-row + div,
-  .page-action-row + div + div {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    width: auto !important;
-    max-width: none !important;
-    gap: 0.75rem !important;
-  }
-
-  .page-action-row + div > div,
-  .page-action-row + div + div > div {
-    width: auto !important;
-    max-width: none !important;
-  }
-
-  .page-action-row + div .stButton > button,
-  .page-action-row + div + div .stButton > button {
-    width: auto !important;
-    min-width: 0 !important;
-    white-space: nowrap !important;
-  }
 
   .teacher-dashboard-hero {
     flex-wrap: nowrap;
@@ -1124,22 +1053,7 @@ div[role="dialog"] * {
   .hero-button-row .stButton > button {
     min-width: 140px;
   }
-  .page-action-row {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    flex-wrap: nowrap;
-  }
-  .page-action-row > div {
-    flex: 0 0 auto !important;
-    min-width: 0 !important;
-  }
-  .page-action-row .stButton > button {
-    width: auto !important;
-    min-width: 0 !important;
-    white-space: nowrap;
-  }
+
   .teacher-dashboard-hero {
     padding: 1rem;
   }
@@ -1147,6 +1061,7 @@ div[role="dialog"] * {
     display: block;
     padding: 1rem;
     margin-top: 1rem;
+    margin-bottom: 1.5rem;
     background: var(--white);
     border: 1px solid rgba(37, 99, 235, 0.14);
     border-radius: var(--radius-md);
@@ -1158,4 +1073,112 @@ div[role="dialog"] * {
     font-size: 0.95rem;
     line-height: 1.6;
   }
+}
+
+/* Add Photos Button Square Dropzone Style */
+.st-key-add_photos_btn button {
+  height: 140px !important;
+  border: 2px dashed var(--blue-400) !important;
+  background: linear-gradient(135deg, var(--white) 0%, var(--blue-50) 100%) !important;
+  color: var(--blue-600) !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  white-space: normal !important;
+}
+
+.st-key-add_photos_btn button:hover {
+  border-color: var(--blue-500) !important;
+  background-color: var(--blue-100) !important;
+  color: var(--blue-700) !important;
+}
+
+.st-key-add_photos_btn button span.material-symbols-rounded {
+  font-size: 80px !important;
+  margin: 0 !important;
+}
+
+.st-key-add_photos_btn button p {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+  /* Ensure hero sections have side-by-side icon and text on mobile */
+  .teacher-dashboard-hero,
+  .student-dashboard-hero {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
+  }
+  
+  .teacher-dashboard-copy,
+  .student-dashboard-copy {
+    flex: 1 1 60% !important;
+  }
+  
+  .teacher-dashboard-hero img,
+  .student-dashboard-hero img {
+    width: 38% !important;
+    max-width: 180px !important;
+    margin-left: 0 !important;
+  }
+  
+  .hero-desktop-copy {
+    display: none !important;
+  }
+}
+
+/* Modern HTML Table Styles */
+.modern-table-wrapper {
+  background: var(--white);
+  border: 1px solid var(--blue-200);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
+  overflow: hidden;
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.modern-table thead {
+  background-color: var(--blue-50);
+  border-bottom: 2px solid var(--blue-200);
+}
+
+.modern-table th {
+  padding: 1rem 1.2rem;
+  font-weight: 700;
+  color: var(--blue-900);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.modern-table td {
+  padding: 1rem 1.2rem;
+  color: var(--gray-700);
+  border-bottom: 1px solid var(--gray-100);
+  vertical-align: middle;
+  font-size: 0.95rem;
+}
+
+.modern-table tbody tr:hover {
+  background-color: var(--gray-50);
+}
+
+.modern-table tbody tr:last-child td {
+  border-bottom: none;
 }

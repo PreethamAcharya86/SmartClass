@@ -57,18 +57,14 @@ def home_screen():
         unsafe_allow_html=True,
     )
 
+    _, center_col, _ = st.columns([1, 1.5, 1])
+    with center_col:
+        if st.button("Start Managing Attendance Now", type="primary", use_container_width=True):
+            st.session_state['login_type'] = 'choose'
+            st.rerun()
+
     st.markdown(
         """
-        <div class="hero-button-row">
-        """,
-        unsafe_allow_html=True,
-    )
-    if st.button("Get Started", type="primary", icon=":material/arrow_forward:"):
-        st.session_state['login_type'] = 'choose'
-        st.rerun()
-    st.markdown(
-        """
-        </div>
         <div class="feature-row">
             <div class="feature-card">
                 <div class="fc-icon-box">

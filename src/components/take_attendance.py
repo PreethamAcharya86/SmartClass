@@ -24,13 +24,15 @@ def take_attendance() :
     subject_options = {f"{s['name']} : {s['subject_code']}" : s["subject_id"] for s in subjects}
 
 
-    col1, col2 = st.columns([3, 1], vertical_alignment="bottom")
-    with col1 :
-        selected_subject = st.selectbox("Select Subject", options=list(subject_options.keys()))
+    selected_subject = st.selectbox("Select Subject", options=list(subject_options.keys()))
 
-    with col2 :
-        if st.button("Add photos", width="stretch", icon=":material/add_a_photo:") :
+    st.markdown("<br>", unsafe_allow_html=True)
+    _, center_col, _ = st.columns([1, 1.2, 1])
+    with center_col:
+        st.markdown('<div class="add-photo-container">', unsafe_allow_html=True)
+        if st.button("Drag and drop images", key="add_photos_btn", icon=":material/add_photo_alternate:", use_container_width=True):
             add_photo_dialog()
+        st.markdown('</div>', unsafe_allow_html=True)
 
     selected_subject_id = subject_options[selected_subject]
     st.divider()

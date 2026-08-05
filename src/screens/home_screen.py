@@ -26,72 +26,49 @@ def home_screen():
     style_base_layout()
     navbar()
 
-    first_row_left, first_row_right = st.columns([0.95, 1.05], vertical_alignment="center")
+    hero_image_path = Path(__file__).resolve().parents[1] / "Images" / "Project_icon.png"
+    with hero_image_path.open("rb") as hero_image_file:
+        hero_image_b64 = base64.b64encode(hero_image_file.read()).decode("ascii")
 
-    with first_row_left:
-        st.markdown(
-            """
-            <div class="hero-card">
-                <div class="hero-badge">AI-powered attendance</div>
-                <h2>Automate Attendance with AI Face Recognition</h2>
-                <p>
-                    Welcome to <strong>VisualAttend</strong> — a polished, fast classroom attendance experience designed for modern schools.
-                    Teachers can scan classroom photos in seconds, and students gain instant visibility into their attendance performance.
-                </p>
+    st.markdown(
+        f"""
+        <div class="hero-row">
+            <div class="hero-left-panel">
+                <div class="hero-card">
+                    <div class="hero-badge">AI-powered attendance</div>
+                    <h2>Automate Attendance with AI Face Recognition</h2>
+                    <p>
+                        Welcome to <strong>VisualAttend</strong> — a polished, fast classroom attendance experience designed for modern schools.
+                        Teachers can scan classroom photos in seconds, and students gain instant visibility into their attendance performance.
+                    </p>
+                </div>
+                <div class="hero-note-card hero-note-card--compact">
+                    <h4>Built for fast, modern classrooms</h4>
+                    <p>From instant face-based sign-in to cleaner attendance insights, every detail is designed to feel effortless.</p>
+                </div>
             </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-    with first_row_right:
-        hero_image_path = Path(__file__).resolve().parents[1] / "Images" / "hero_section.png"
-        with hero_image_path.open("rb") as hero_image_file:
-            hero_image_b64 = base64.b64encode(hero_image_file.read()).decode("ascii")
-
-        st.markdown(
-            f"""
-            <div class="hero-visual-card hero-visual-card--large">
-                <img src="data:image/png;base64,{hero_image_b64}" alt="VisualAttend hero illustration" />
+            <div class="hero-right-panel">
+                <div class="hero-visual-card hero-visual-card--large">
+                    <img src="data:image/png;base64,{hero_image_b64}" alt="VisualAttend hero illustration" />
+                </div>
             </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-    second_row_left, second_row_right = st.columns([0.45, 0.55], vertical_alignment="center")
-
-    with second_row_left:
-        project_icon_path = Path(__file__).resolve().parents[1] / "Images" / "Project_icon.png"
-        with project_icon_path.open("rb") as project_icon_file:
-            project_icon_b64 = base64.b64encode(project_icon_file.read()).decode("ascii")
-
-        st.markdown(
-            f"""
-            <div class="hero-icon-card">
-                <img src="data:image/png;base64,{project_icon_b64}" alt="VisualAttend project icon" />
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-        st.markdown('<div class="hero-action-wrapper">', unsafe_allow_html=True)
-        if st.button("Get Started", type="primary", icon=":material/arrow_forward:"):
-            st.session_state['login_type'] = 'choose'
-            st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
-
-    with second_row_right:
-        st.markdown(
-            """
-            <div class="hero-note-card">
-                <h4>Built for fast, modern classrooms</h4>
-                <p>From instant face-based sign-in to cleaner attendance insights, every detail is designed to feel effortless.</p>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     st.markdown(
         """
+        <div class="hero-button-row">
+        """,
+        unsafe_allow_html=True,
+    )
+    if st.button("Get Started", type="primary", icon=":material/arrow_forward:"):
+        st.session_state['login_type'] = 'choose'
+        st.rerun()
+    st.markdown(
+        """
+        </div>
         <div class="feature-row">
             <div class="feature-card">
                 <div class="fc-icon-box">

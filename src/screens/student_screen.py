@@ -14,14 +14,15 @@ import time
 
 
 def student_screen():
-    navbar()
-    back()
+    navbar(hide_actions=True)
 
     show_registration = False
 
     if 'student_data' in st.session_state and st.session_state.user_role == 'student':
         student_dashboard()
         return
+
+    back()
 
     st.markdown(
         """
@@ -114,9 +115,12 @@ def _render_student_hero(image_filename: str, title: str, subtitle: str):
         <div class="teacher-dashboard-hero">
             <div class="teacher-dashboard-copy">
                 <h2>{title}</h2>
-                <p>{subtitle}</p>
+                <p class="hero-desktop-copy">{subtitle}</p>
             </div>
             <img src="data:image/png;base64,{encoded_image}" alt="{title}" />
+        </div>
+        <div class="hero-mobile-copy">
+            <p>{subtitle}</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -126,6 +130,20 @@ def _render_student_hero(image_filename: str, title: str, subtitle: str):
 def student_dashboard():
     student_data = st.session_state.student_data
     student_id = student_data["student_id"]
+
+    st.markdown('<div class="page-action-row"></div>', unsafe_allow_html=True)
+    col_left, col_right = st.columns([1, 0.24], gap="small")
+    with col_left:
+        back()
+    with col_right:
+        st.markdown('<div class="action-right-wrapper">', unsafe_allow_html=True)
+        if st.button("Logout", key='logout_student', type='secondary', icon=":material/logout:"):
+            del st.session_state.student_data
+            st.session_state.user_role = None
+            st.session_state.is_logged_in = False
+            st.session_state['login_type'] = None
+            st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
 
     _render_student_hero(
         "student_dashboard.png",

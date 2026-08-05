@@ -21,7 +21,7 @@ def header_home():
     )
 
 
-def navbar():
+def navbar(hide_actions: bool = False):
     style_base_layout()
 
     st.markdown(
@@ -36,10 +36,13 @@ def navbar():
         unsafe_allow_html=True,
     )
 
-    _navbar_actions()
+    _navbar_actions(hide_actions)
 
 
-def _navbar_actions():
+def _navbar_actions(hide_actions: bool = False):
+    if hide_actions:
+        return
+
     _, action_col = st.columns([5, 1])
     with action_col:
         if 'teacher_data' in st.session_state and st.session_state.get('user_role') == 'teacher':

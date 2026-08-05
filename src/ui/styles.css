@@ -86,7 +86,7 @@ footer,
 [data-testid="block-container"] {
   padding-top: 0.2rem !important;
   padding-bottom: 0.3rem !important;
-  padding-left: 2.20rem !important;
+  padding-left: 2.2rem !important;
   padding-right: 2.2rem !important;
   max-width: 1240px !important;
   margin: 0 auto !important;
@@ -231,8 +231,141 @@ footer,
 .hero-button-row {
   display: flex;
   justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+}
+
+.page-action-row {
+  display: none;
+}
+
+.page-action-row + div,
+.page-action-row + div + div {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: auto !important;
+  max-width: none !important;
+  margin-bottom: 0 !important;
+  gap: 0.75rem !important;
+}
+
+.page-action-row + div,
+.page-action-row + div + div {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: auto !important;
+  max-width: none !important;
+  margin-bottom: 0 !important;
+  gap: 0.75rem !important;
+}
+
+.page-action-row + div > div,
+.page-action-row + div + div > div {
+  width: auto !important;
+  max-width: none !important;
+}
+
+.page-action-row + div .stButton > button,
+.page-action-row + div + div .stButton > button {
+  width: auto !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+}
+
+.action-right-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-left: auto;
+  padding-right: 0;
+}
+
+.hero-mobile-copy {
+  display: none;
+}
+
+.hero-desktop-copy {
+  margin: 0;
+  color: var(--gray-600);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+  .teacher-dashboard-hero {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .teacher-dashboard-copy {
+    flex: 1 1 58%;
+  }
+
+  .teacher-dashboard-hero img {
+    width: 42%;
+    max-width: 220px;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-action-row + div,
+  .page-action-row + div + div {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: auto !important;
+    max-width: none !important;
+    gap: 0.75rem !important;
+  }
+
+  .page-action-row + div > div,
+  .page-action-row + div + div > div {
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .page-action-row + div .stButton > button,
+  .page-action-row + div + div .stButton > button {
+    width: auto !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .teacher-dashboard-hero {
+    flex-wrap: nowrap;
+  }
+
+  .teacher-dashboard-copy {
+    flex: 1 1 60%;
+  }
+
+  .teacher-dashboard-hero img {
+    width: 38%;
+    max-width: 180px;
+    margin-left: 0;
+  }
+
+  .hero-desktop-copy {
+    display: none;
+  }
+
+  .hero-mobile-copy {
+    display: block;
+    padding: 1rem;
+    margin-top: 1rem;
+    background: var(--white);
+    border: 1px solid rgba(37, 99, 235, 0.14);
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+  }
 }
 
 .hero-note-card.hero-note-card--compact {
@@ -919,6 +1052,25 @@ div[role="dialog"] * {
   }
 }
 
+@media (max-width: 992px) {
+  [data-testid="block-container"] {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    max-width: 100% !important;
+  }
+  .hero-row {
+    flex-direction: column;
+  }
+  .hero-left-panel,
+  .hero-right-panel {
+    flex: 1 1 100%;
+  }
+  .teacher-dashboard-hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 @media (max-width: 768px) {
   [data-testid="block-container"] {
     padding-left: 1rem !important;
@@ -930,5 +1082,45 @@ div[role="dialog"] * {
   }
   .feature-row {
     flex-direction: column;
+  }
+  .hero-button-row {
+    justify-content: center;
+  }
+  .hero-button-row .stButton > button {
+    min-width: 140px;
+  }
+  .page-action-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+  }
+  .page-action-row > div {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+  }
+  .page-action-row .stButton > button {
+    width: auto !important;
+    min-width: 0 !important;
+    white-space: nowrap;
+  }
+  .teacher-dashboard-hero {
+    padding: 1rem;
+  }
+  .hero-mobile-copy {
+    display: block;
+    padding: 1rem;
+    margin-top: 1rem;
+    background: var(--white);
+    border: 1px solid rgba(37, 99, 235, 0.14);
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+  }
+  .hero-mobile-copy p {
+    margin: 0;
+    color: var(--gray-600);
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 }

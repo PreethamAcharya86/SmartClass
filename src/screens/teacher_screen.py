@@ -13,8 +13,7 @@ import time
 
 
 def teacher_screen():
-    navbar()
-    back()
+    navbar(hide_actions=True)
 
     if 'teacher_data' in st.session_state and st.session_state.user_role == 'teacher':
         teacher_dashboard()
@@ -114,9 +113,12 @@ def _render_teacher_hero(image_filename: str, title: str, subtitle: str):
         <div class="teacher-dashboard-hero">
             <div class="teacher-dashboard-copy">
                 <h2>{title}</h2>
-                <p>{subtitle}</p>
+                <p class="hero-desktop-copy">{subtitle}</p>
             </div>
             <img src="data:image/png;base64,{encoded_image}" alt="{title}" />
+        </div>
+        <div class="hero-mobile-copy">
+            <p>{subtitle}</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -125,6 +127,20 @@ def _render_teacher_hero(image_filename: str, title: str, subtitle: str):
 
 def teacher_dashboard():
     data = st.session_state.teacher_data
+
+    st.markdown('<div class="page-action-row"></div>', unsafe_allow_html=True)
+    col_left, col_right = st.columns([1, 0.24], gap="small")
+    with col_left:
+        back()
+    with col_right:
+        st.markdown('<div class="action-right-wrapper">', unsafe_allow_html=True)
+        if st.button("Logout", key='logout_teacher', type='secondary', icon=":material/logout:"):
+            del st.session_state.teacher_data
+            st.session_state.user_role = None
+            st.session_state.is_logged_in = False
+            st.session_state['login_type'] = None
+            st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
 
     _render_teacher_hero(
         "teacherIcon.png",

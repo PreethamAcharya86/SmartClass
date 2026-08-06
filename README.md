@@ -1,4 +1,4 @@
-# SmartClass – AI‑Powered Attendance System
+# VisualAttend – AI‑Powered Attendance System
 
 ---
 

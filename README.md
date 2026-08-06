@@ -33,7 +33,6 @@
 
 [VisualAttend Demo](https://visualattendlanding.vercel.app)  <!-- URL kept from the reference; replace with your own if available -->
 
----
 
 ## Repository
 

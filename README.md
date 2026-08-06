@@ -1,6 +1,5 @@
 # VisualAttend – AI‑Powered Attendance System
 
----
 
 ## Overview
 

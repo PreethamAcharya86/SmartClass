@@ -38,7 +38,7 @@
 
 ## Repository
 
-[GitHub – VisualAttend](https://github.com/PreethamAcharya86/SmartClass)
+[GitHub – VisualAttend](https://github.com/PreethamAcharya86/VisualAttend)
 
 ---
 
@@ -46,8 +46,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/PreethamAcharya86/SmartClass.git
-   cd SmartClass
+   git clone https://github.com/PreethamAcharya86/VisualAttend.git
+   cd VisualAttend
    ```
 2. **Create a virtual environment and install dependencies**
    ```bash

@@ -55,9 +55,15 @@ body,
   -ms-overflow-style: none !important;
 }
 
-/* Completely collapse Streamlit's built-in header to pull app content to top edge */
+/* Completely collapse Streamlit's built-in header and toolbar to pull app content directly to top edge */
 header[data-testid="stHeader"],
-[data-testid="stHeader"] {
+[data-testid="stHeader"],
+[data-testid="stDecoration"],
+[data-testid="stToolbar"],
+#MainMenu,
+footer,
+[data-testid="stDeployButton"],
+.stDeployButton {
   display: none !important;
   height: 0 !important;
   min-height: 0 !important;
@@ -66,31 +72,49 @@ header[data-testid="stHeader"],
   visibility: hidden !important;
 }
 
-#MainMenu,
-footer,
-[data-testid="stToolbar"],
-[data-testid="stDecoration"],
-[data-testid="stDeployButton"],
-.stDeployButton {
-  visibility: hidden !important;
-  display: none !important;
-  height: 0 !important;
-}
-
-[data-testid="stMain"] {
-  padding: 0 !important;
+html,
+body,
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+section.main {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   margin-top: 0 !important;
+  margin-bottom: 0 !important;
   min-height: 100vh !important;
 }
 
-[data-testid="block-container"] {
-  padding-top: 0.2rem !important;
-  padding-bottom: 0.3rem !important;
+[data-testid="block-container"],
+[data-testid="stMainBlockContainer"],
+.main .block-container {
+  padding-top: 0 !important;
+  padding-bottom: 1.8rem !important;
   padding-left: 2.2rem !important;
   padding-right: 2.2rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
   max-width: 1240px !important;
-  margin: 0 auto !important;
-  min-height: calc(100vh - 0.4rem) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  min-height: 100vh !important;
+}
+
+[data-testid="block-container"] > div[data-testid="stVerticalBlock"] {
+  gap: 0.35rem !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+[data-testid="block-container"] > div[data-testid="stVerticalBlock"] > div:first-child,
+div[data-testid="stElementContainer"]:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+[data-testid="block-container"] > div[data-testid="stVerticalBlock"] > div:last-child,
+div[data-testid="stElementContainer"]:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .material-symbols-outlined {
@@ -118,7 +142,7 @@ footer,
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.1rem !important;
 }
 
 .va-navbar-brand {
@@ -245,10 +269,28 @@ div[data-testid="stHorizontalBlock"]:has(.st-key-back_btn) {
   align-items: center !important;
   width: 100% !important;
   gap: 0.75rem !important;
-  margin-bottom: 1rem !important;
+  margin-top: -0.4rem !important;
+  margin-bottom: -0.4rem !important;
 }
 
-div[data-testid="stHorizontalBlock"]:has(.st-key-back_btn) > div[data-testid="stColumn"] {
+.page-action-row {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+div[data-testid="stElementContainer"]:has(.st-key-back_btn),
+div[data-testid="stElementContainer"]:has(.st-key-choice_back),
+div[data-testid="stElementContainer"]:has(.st-key-logout),
+div[data-testid="stElementContainer"]:has(.st-key-logout_teacher),
+div[data-testid="stElementContainer"]:has(.st-key-logout_student) {
+  margin-top: -0.2rem !important;
+  margin-bottom: -0.2rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(.st-key-back_btn)
+  > div[data-testid="stColumn"] {
   flex: 0 0 auto !important;
   min-width: 0 !important;
   width: auto !important;
@@ -302,7 +344,6 @@ div[data-testid="stHorizontalBlock"]:has(.st-key-back_btn) .stButton > button {
 }
 
 @media (max-width: 768px) {
-
   .teacher-dashboard-hero {
     flex-wrap: nowrap;
   }
@@ -419,7 +460,8 @@ div[data-testid="stHorizontalBlock"]:has(.st-key-back_btn) .stButton > button {
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 1.1rem;
-  margin-bottom: 1rem;
+  margin-top: 0.2rem !important;
+  margin-bottom: 0.75rem !important;
   background: linear-gradient(120deg, var(--white), var(--blue-50));
   border: 1px solid rgba(37, 99, 235, 0.16);
   border-radius: var(--radius-lg);
@@ -704,16 +746,11 @@ hr {
   margin: 0.6rem 0 !important;
 }
 
-/* ============================================================
-   BUTTON STYLES & RICH HOVER EFFECTS
-   ============================================================ */
-
-/* Generic button polish for a more premium Streamlit experience */
 div.stButton > button,
 div.stDownloadButton > button,
 div.stFormSubmitButton > button {
   border: 1.5px solid rgba(37, 99, 235, 0.18) !important;
-  border-radius: var(--radius-sm) !important;
+  border-radius: 10px !important;
   font-weight: 600 !important;
   letter-spacing: 0.01em !important;
   padding: 0.62rem 1.05rem !important;
@@ -727,6 +764,39 @@ div.stFormSubmitButton > button {
     border-color 0.2s ease !important;
   position: relative;
   overflow: hidden;
+}
+
+/* Main content area action buttons (e.g., Analyze, Clear images, Take attendance, Create subject) - slightly reduced width & centered */
+[data-testid="block-container"]
+  div.stButton:not(:has(.st-key-get_started_btn)):not(:has(.st-key-logout)):not(
+    :has(.st-key-logout_teacher)
+  ):not(:has(.st-key-logout_student)):not(:has(.st-key-back_btn)):not(
+    :has(.st-key-choice_back)
+  )
+  > button {
+  width: 90% !important;
+  max-width: 90% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+/* Specific targeted styles for compact action & navigation buttons - IMMUTABLE AUTO WIDTH */
+.st-key-get_started_btn button,
+.st-key-logout button,
+.st-key-logout_teacher button,
+.st-key-logout_student button,
+.st-key-back_btn button,
+.st-key-choice_back button {
+  width: auto !important;
+  min-width: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.3rem !important;
+  padding: 0.45rem 0.85rem !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
 }
 
 div.stButton > button:hover,
@@ -1079,7 +1149,11 @@ div[role="dialog"] * {
 .st-key-add_photos_btn button {
   height: 140px !important;
   border: 2px dashed var(--blue-400) !important;
-  background: linear-gradient(135deg, var(--white) 0%, var(--blue-50) 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--white) 0%,
+    var(--blue-50) 100%
+  ) !important;
   color: var(--blue-600) !important;
   border-radius: 12px !important;
   display: flex !important;
@@ -1118,19 +1192,19 @@ div[role="dialog"] * {
     justify-content: space-between !important;
     gap: 1rem !important;
   }
-  
+
   .teacher-dashboard-copy,
   .student-dashboard-copy {
     flex: 1 1 60% !important;
   }
-  
+
   .teacher-dashboard-hero img,
   .student-dashboard-hero img {
     width: 38% !important;
     max-width: 180px !important;
     margin-left: 0 !important;
   }
-  
+
   .hero-desktop-copy {
     display: none !important;
   }

@@ -22,6 +22,7 @@ def login_teacher(username, password) :
             st.session_state.user_role = 'teacher'
             st.session_state.is_logged_in = True
             return True, "Welcome back!"
+        return False, "Incorrect username or password!"
     except Exception as e :
         return False, e
     

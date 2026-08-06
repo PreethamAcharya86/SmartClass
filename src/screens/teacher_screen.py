@@ -48,7 +48,7 @@ def teacher_screen_login():
             btn1, btn2 = st.columns(2)
             with btn1:
                 if st.button("Login", shortcut='enter', type="primary", use_container_width=True):
-                    success, message = login_teacher(teacher_username, teacher_password)
+                    success, message = login_teacher(teacher_username.strip(), teacher_password)
                     if success:
                         st.toast(message)
                         time.sleep(1)
@@ -87,7 +87,9 @@ def teacher_screen_register():
             btn1, btn2 = st.columns(2)
             with btn1:
                 if st.button("Register", shortcut="enter", type="primary", use_container_width=True):
-                    success, message = register_teacher(teacher_name, teacher_username, teacher_password)
+                    success, message = register_teacher(
+                        teacher_name.strip(), teacher_username.strip(), teacher_password
+                    )
                     if success:
                         st.toast(message)
                         time.sleep(2)
@@ -128,7 +130,6 @@ def _render_teacher_hero(image_filename: str, title: str, subtitle: str):
 def teacher_dashboard():
     data = st.session_state.teacher_data
 
-    st.markdown('<div class="page-action-row">', unsafe_allow_html=True)
     col_left, col_right = st.columns([1, 0.24], gap="small")
     with col_left:
         back()
@@ -141,7 +142,6 @@ def teacher_dashboard():
             st.session_state['login_type'] = None
             st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
 
     _render_teacher_hero(
         "teacherIcon.png",

@@ -30,7 +30,7 @@ def take_attendance() :
     _, center_col, _ = st.columns([1, 1.2, 1])
     with center_col:
         st.markdown('<div class="add-photo-container">', unsafe_allow_html=True)
-        if st.button("Drag and drop images", key="add_photos_btn", icon=":material/add_photo_alternate:", use_container_width=True):
+        if st.button("Add photos to analyze", key="add_photos_btn", icon=":material/add_photo_alternate:", use_container_width=True):
             add_photo_dialog()
         st.markdown('</div>', unsafe_allow_html=True)
 

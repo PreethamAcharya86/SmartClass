@@ -62,7 +62,7 @@ def _navbar_actions(hide_actions: bool = False):
                 st.rerun()
 
         else:
-            if st.button("Get started", icon=":material/arrow_forward:"):
+            if st.button("Get started", key='get_started_btn', icon=":material/arrow_forward:"):
                 st.session_state['login_type'] = 'choose'
                 st.rerun()
 

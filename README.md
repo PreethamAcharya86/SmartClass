@@ -32,13 +32,13 @@
 
 ## Live Demo
 
-[SmartClass Demo](https://visualattendlanding.vercel.app)  <!-- URL kept from the reference; replace with your own if available -->
+[VisualAttend Demo](https://visualattendlanding.vercel.app)  <!-- URL kept from the reference; replace with your own if available -->
 
 ---
 
 ## Repository
 
-[GitHub – SmartClass](https://github.com/PreethamAcharya86/SmartClass)
+[GitHub – VisualAttend](https://github.com/PreethamAcharya86/SmartClass)
 
 ---
 
@@ -62,7 +62,3 @@
    ```
 
 ---
-
-## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests. Please follow the existing code style and include tests for new features.
